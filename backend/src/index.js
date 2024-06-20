@@ -7,7 +7,7 @@ import comment_router from "./router/comment_router.js";
 import session from 'express-session';
 
 // Create a host
-const app = express();
+const app    = express();
 const port = 3000;
 const corsOptions = {
     origin: 'http://localhost:63343/26/frontend/index.html?',
