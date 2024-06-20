@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Very strange duck",
+    "user_id": 1,
+    "likes": 5,
+    "image_url": "some_url",
+    "comments" : {
+      "user": "Me",
+      "content": "Impressive duck!"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Very VERY strange duck",
+    "user_id": 2,
+    "likes": 55,
+    "image_url": "some_url"
+  }
+]

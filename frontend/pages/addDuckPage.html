@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body class="background">
+    <main>
+        <div class="top-border">
+            <a href="../index.html">
+                <img src="/frontend/materials/logo.png" alt="clickable duck logo" class="logo-style">
+            </a>
+        </div>
+        <h1 class="big-text"> Add your own AMAZING duck!!!</h1>
+        <section class="duck-list">
+            <div class="square" id="imageContainer"></div>
+            <div class="center-text-position">
+                <label class="small-text"> Name: </label><br>
+                <label for="name"></label><input type="text" id="name" class="input-fields"><br>
+                <label class="small-text"> URL: </label><br>
+                <label for="imageUrl"></label><input type="text" id="imageUrl" class="input-fields">
+            </div>
+        </section>
+        <form class="upload-button" action="/upload" method="post" enctype="multipart/form-data">
+            <button type="button" id="uploadButton"> Upload Image </button>
+        </form>
+        <div class="center-text-position">
+            <button class="create-button" id="createDuck"> Create </button>
+        </div>
+        <div class="bottom-border">
+            <div class="center-text-position">
+                <p class="small-text">Contact me here: 545700@student.saxion.com. Enjoy!</p>
+            </div>
+        </div>
+    </main>
+<script src="/frontend/javascript/duck-add.js"></script>
+</body>
+</html>

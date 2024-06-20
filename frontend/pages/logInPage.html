@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script defer src="/frontend/javascript/login.js"></script>
+</head>
+<body class="background">
+<main>
+    <div class="top-border"></div>
+    <h1 class="big-text">Log in</h1>
+    <div class="log-in-form">
+        <form id="loginForm">
+            <div class="login-text">
+                <label class="small-text">UserName:</label><br>
+                <input type="text" id="username" class="input-fields" required><br>
+                <label class="small-text">E-mail:</label><br>
+                <input type="email" id="email" class="input-fields" required>
+                <label class="small-text">Password:</label><br>
+                <input type="password" id="password" class="input-fields" required>
+            </div>
+        </form>
+        <form id="preferencesForm" class="log-in-choose">
+            <p class="small-text">Do you like ducks?</p>
+            <input type="radio" id="yes" name="duckPreference" value="yes" required>
+            <label class="small-text" for="yes">Yes</label><br>
+            <input type="radio" id="no" name="duckPreference" value="no">
+            <label class="small-text" for="no">No</label><br>
+        </form>
+    </div>
+    <div class="buttons-sorted">
+        <button id="createAccountBtn" class="small-text">Create an account</button>
+    </div>
+    <div class="buttons-sorted">
+        <button id="loginBtn" class="small-text">Log in</button>
+    </div>
+    <div class="bottom-border">
+        <div class="contact-me">
+            <p class="small-text">Contact me here: 545700@student.saxion.com. Enjoy!</p>
+        </div>
+    </div>
+</main>
+</body>
+</html>

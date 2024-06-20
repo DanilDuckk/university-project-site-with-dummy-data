@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/frontend/css/style.css">
+</head>
+<body class="background">
+<main>
+    <div class="top-border">
+        <a href="../index.html">
+            <img src="/frontend/materials/logo.png" alt="clickable duck logo" class="logo-style">
+        </a>
+        <a href="/frontend/pages/logInPage.html" id="logout" class="small-text">Logout</a>
+    </div>
+
+    <section id="duck-details" class="comment-duck"></section>
+
+    <section class="left-position">
+        <label class="small-text">Write your comment here:</label><br>
+        <input class="comment-input" type="text" id="comment"><br>
+        <button id="submit-comment" class="submit-button">Submit</button>
+    </section>
+
+    <div class="center-text-position">
+        <p class="small-text">Comments:</p>
+    </div>
+
+    <div id="comments-container" class="comments">
+
+    </div>
+
+    <div class="bottom-border">
+        <div class="contact-me">
+            <p class="small-text">Contact me here: 545700@student.saxion.com. Enjoy!</p>
+        </div>
+    </div>
+</main>
+
+<script src="../fetchers/comment-fetcher.js"></script>
+</body>
+</html>

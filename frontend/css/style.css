@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#logout {
+    cursor: pointer;
+    text-align: justify;
+    margin-right: 1vw;
+    text-decoration: none;
+    color: black;
+}
+
+.background {
+    background-color: rgb(136,218,116);
+}
+
+section {
+    justify-content: center;
+}
+
+.big-text {
+    font-size: 3vw;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    text-align: center;
+}
+
+.small-text {
+    font-size: 1.5vw;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+.center-text-position {
+    text-align: center;
+}
+
+.left-position {
+    text-align: left;
+    margin-left: 1vw;
+}
+
+.submit-button {
+    margin-top: 1vw;
+}
+
+.comment-input {
+    margin-top: 1vw;
+    width: 50vw;
+    font-size: 1.5vw;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+.login-text {
+    text-align: center;
+}
+
+.duck-list {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 1vw;
+}
+
+.comment-duck {
+    justify-content: left;
+    display: flex;
+    margin-top: 2vw;
+    margin-left: 2vw;
+    text-align: left;
+}
+
+.top-border {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5.5vw;
+    background-color: rgb(164,147,91);
+}
+
+.bottom-border {
+    margin-top: 3vw;
+    background-color: rgb(164,147,91);
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    height: 5.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.comments {
+    margin-left: 1vw;
+}
+
+.contact-me {
+    text-align: center;
+}
+
+.logo-style {
+    height: 5.5vw;
+    width: 5.5vw;
+}
+
+.create-button {
+    text-align: center;
+    margin-top: 5vw;
+    font-size: 1.5vw;
+    width: 10vw;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+.input-fields {
+    height: 2vw;
+    width: 12vw;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-size: 1.5vw;
+    border-radius: 0.7vw;
+    margin-bottom: 1vw
+}
+
+.buttons-sorted {
+    text-align: center;
+    margin-bottom: 1vw;
+}
+
+.like-button {
+    margin-right: 6vw;
+    width: 10vw;
+}
+
+.duck-image {
+    cursor: pointer;
+    width: 15vw;
+    height: 15vw;
+    margin-right: 10vw;
+}
+
+button {
+    font-size: 1.5vw;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    cursor: pointer;
+    border: none;
+}
+
+form {
+    margin-bottom: 1vw;
+}
+
+.square {
+    height: 12vw;
+    width: 12vw;
+    background-color: rgb(128,128,128);
+    justify-content: flex-start;
+    display: flex;
+    margin-right: 6vw;
+}
+
+.upload-button {
+    display: block;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 35vw;
+    margin-top: 1vw;
+}
+
+.duck-comment-image {
+    height: 12vw;
+    width: 12vw;
+    margin-right: 7vw;
+}
+
+.center-position-align {
+    display: flex;
+    justify-content: center;
+}
+
+.log-in-form {
+    display: flex;
+    width: 19vw;
+    height: 16vw;
+    border: 1vw solid white;
+    background-color: white;
+    margin-left: 39vw;
+    margin-bottom: 1vw;
+}
+
+.log-in-choose {
+    margin-left: 1.5vw;
+    text-align: center;
+}
