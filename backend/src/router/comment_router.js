@@ -1,7 +1,6 @@
 // Imports
 import express from 'express';
 import * as comment_controller from '../contollers/comment-controller.js'
-import {findDuckComments} from "../contollers/comment-controller.js";
 
 const router = express.Router();
 

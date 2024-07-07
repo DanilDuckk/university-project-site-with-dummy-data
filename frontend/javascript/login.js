@@ -20,8 +20,9 @@ document.getElementById('createAccountBtn').addEventListener('click', async (eve
             body: JSON.stringify({ email, username, password }),
         });
         if (response.ok) {
-            window.location.href = '../index.html';
+            alert("You have created an account! Now login!")
         } else {
+            alert("Failed to register. Email or password already in use of some other account")
             console.error('Failed to register');
         }
     } catch (error) {

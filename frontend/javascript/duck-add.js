@@ -29,6 +29,7 @@ document.getElementById('createDuck').addEventListener('click', () => {
             if (response.ok) {
                 window.location.href="../index.html";
             } else {
+                alert("Need to make an account before creating a duck!")
                 console.error('Failed to add duck.');
             }
             })

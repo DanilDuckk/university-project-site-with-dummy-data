@@ -1,8 +1,6 @@
 // Imports
 import express from 'express';
 import * as duck_controller from '../contollers/duck-controller.js'
-import * as user_controller from "../contollers/user-controller.js";
-import * as comment_controller from "../contollers/comment-controller.js";
 
 //
 const router = express.Router();

@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const duckId = urlParams.get('duckId');
@@ -66,7 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
             fetch(`http://localhost:3000/comments/addComment`, { // TO DO
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'userId': 20
                 },
                 body: JSON.stringify({ duck_id: duckId, content: newComment })
             })
@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         commentInput.value = '';
                         location.reload()
                     } else {
+                        alert("Need to make an account before commenting!")
                         console.error('Failed to submit comment.');
                     }
                 })

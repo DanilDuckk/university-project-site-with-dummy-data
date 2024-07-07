@@ -4,6 +4,7 @@ import db from "../../dbSetup/setup.js"
 import {userSessionID} from "./user-controller.js";
 
 export function getAllDucks(req, res){
+    console.log(req.headers)
     const query = `
         SELECT duck.id, duck.image_url, duck.name, duck.likes, user.username AS creator
         FROM duck

@@ -9,13 +9,13 @@ import session from 'express-session';
 // Create a host
 const app    = express();
 const port = 3000;
-const corsOptions = {
-    origin: 'http://localhost:63343/26/frontend/index.html?',
+const corsOptions = { // I needed to leave this because login and register account feature won't work
+    origin: 'http://localhost:63342',
     credentials: true
 };
 
 // Tell app to use these
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(session({
     secret: 'DKEY123',
@@ -31,5 +31,3 @@ app.use('/comments', comment_router)
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
 });
-
-

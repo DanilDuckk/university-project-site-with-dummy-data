@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <title>Duck Species</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script defer src="/backend/src/index.js" type="module"></script>
+    <script defer src="../backend/src/index.js" type="module"></script>
 </head>
 <body class="background">
 <main>
-    <div class="top-border">
+    <header class="top-border">
         <a href="index.html">
             <img src="materials/logo.png" alt="clickable duck logo" class="logo-style">
         </a>
         <a href="pages/logInPage.html" id="logout" class="small-text">Logout</a>
-    </div>
+    </header>
     <section>
         <button onclick="window.location.href = 'pages/addDuckPage.html'" class="buttons-sorted"> Add your own species </button>
         <h1 class="big-text"> Duck species </h1>
@@ -21,11 +21,11 @@
     <ul id="duck-objects">
         <form id="duck-list"></form>
     </ul>
-    <div class="bottom-border">
+    <section class="bottom-border">
         <div class="center-text-position">
             <p class="small-text">Contact me here: 545700@student.saxion.com. Enjoy!</p>
         </div>
-    </div>
+    </section>
 </main>
 <script src="fetchers/duck-fetcher.js"></script>
 </body>
