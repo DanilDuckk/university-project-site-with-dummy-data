@@ -1,9 +1,6 @@
 // Imports
-import statusCodes from "http-status-codes";
 import bcrypt from 'bcrypt';
 import db from "../../dbSetup/setup.js";
-
-export let userSessionID;
 
 export function getAllUsers(req, res){
     const query = `
@@ -12,7 +9,7 @@ export function getAllUsers(req, res){
     `;
     const result = db.prepare(query).all();
 
-    res.status(statusCodes.OK).json(result);
+    res.json(result);
 }
 
 export async function registerUser(req, res) {
@@ -21,10 +18,10 @@ export async function registerUser(req, res) {
         const hashedPassword = await bcrypt.hashSync(password, 10);
         const insertUser = db.prepare('INSERT INTO user (email, username, password) VALUES (?, ?, ?)');
         insertUser.run(email, username, hashedPassword);
-        res.status(statusCodes.CREATED).json({message: 'User registered successfully'});
+        res.json({message: 'User registered successfully'});
     } catch (error) {
         console.error(error);
-        res.status(statusCodes.INTERNAL_SERVER_ERROR).send('Error registering user');
+        res.send('Error registering user');
     }
 }
 
@@ -33,12 +30,10 @@ export async function logInUser(req, res) {
     const query = 'SELECT * FROM user WHERE email = ?';
     const user = db.prepare(query).get(email);
     if (!user || !bcrypt.compareSync(password, user.password)) {
-        return res.status(statusCodes.UNAUTHORIZED).json({ message: 'Invalid email or password' });
+        return res.json({ message: 'Invalid email or password' });
     }
-    req.session.userId = user.id;
-    userSessionID = user.id;
     console.log("Session created for "+user.id)
-    res.status(statusCodes.OK).json({ message: 'Login successful', userId: user.id });
+    res.json({ userId: user.id });
 }
 
 export function findUserById(req, res) {
@@ -48,9 +43,9 @@ export function findUserById(req, res) {
     const result = statement.get(userId);
 
     if (result) {
-        res.status(statusCodes.OK).json(result);
+        res.json(result);
     } else {
-        res.status(statusCodes.NOT_FOUND).json({ error: 'User not found' });
+        res.json({ error: 'User not found' });
     }
 }
 
@@ -66,12 +61,12 @@ export function deleteUser(req, res) {
         const result = stmt1.run(id);
 
         if (result.changes === 0) {
-            res.status(statusCodes.NOT_FOUND).json({ error: 'User not found' });
+            res.json({ error: 'User not found' });
         } else {
-            res.status(statusCodes.OK).json({ message: 'User deleted successfully' });
+            res.json({ message: 'User deleted successfully' });
         }
     } catch (error) {
         console.error('Error deleting user:', error);
-        res.status(statusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal server error' });
+        res.json({ error: 'Internal server error' });
     }
 }

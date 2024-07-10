@@ -1,7 +1,5 @@
 // Imports
-import statusCodes from "http-status-codes";
 import db from "../../dbSetup/setup.js"
-import {userSessionID} from "./user-controller.js";
 
 export function getAllDucks(req, res){
     console.log(req.headers)
@@ -12,7 +10,7 @@ export function getAllDucks(req, res){
     `;
     const result = db.prepare(query).all();
 
-    res.status(statusCodes.OK).json(result);
+    res.json(result);
 }
 
 export function getClickedDuck(req, res){
@@ -27,9 +25,9 @@ export function getClickedDuck(req, res){
     const result = statement.get(duckId);
 
     if (result) {
-        res.status(statusCodes.OK).json(result);
+        res.json(result);
     } else {
-        res.status(statusCodes.NOT_FOUND).json({ error: 'Duck not found' });
+        res.json({ error: 'Duck not found' });
     }
 }
 
@@ -42,13 +40,13 @@ export function updateLikes(req, res){
         const result = stmt.run(likes, id);
 
         if (result.changes === 0) {
-            res.status(404).json({ error: 'Duck not found' });
+            res.json({ error: 'Duck not found' });
         } else {
             res.json({ message: 'Likes updated successfully' });
         }
     } catch (error) {
         console.error('Error updating duck likes:', error);
-        res.status(statusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal server error' });
+        res.json({ error: 'Internal server error' });
     }
 }
 
@@ -62,24 +60,26 @@ export function deleteDuck(req, res){
         const result = stmt1.run(id);
 
         if (result.changes === 0) {
-            res.status(statusCodes.NOT_FOUND).json({ error: 'Duck not found' });
+            res.json({ error: 'Duck not found' });
         } else {
             res.json({ message: 'Duck deleted successfully' });
         }
     } catch (error) {
         console.error('Error deleting duck:', error);
-        res.status(statusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal server error' });
+        res.json({ error: 'Internal server error' });
     }
 }
 
 export function addDuck(req, res) {
     const { image_url, name } = req.body;
-    const userId = userSessionID;
+    const userId = req.header('User-ID');
+
+    console.log("The current id is :"+userId)
     if (!userId) {
-        return res.status(401).json({ message: 'Unauthorized, wrong session' });
+        return res.json({ message: 'Unauthorized, wrong session' });
     }
     const query = 'INSERT INTO duck (image_url, name, user_id) VALUES (?, ?, ?)';
     const stmt = db.prepare(query);
     stmt.run(image_url, name, userId);
-    res.status(statusCodes.CREATED).json({ message: 'Duck added successfully' });
+    res.json({ message: 'Duck added successfully' });
 }
