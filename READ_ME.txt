@@ -1,5 +1,5 @@
-Hello dear user!
-You can start project by running npm start in the terminal and launching
+Hello user!
+You can start project by running npm start in the (locate to the "backend" folder) in the terminal and launching
 index.html in the frontend folder.
 It also has some dummy data for you to user.
 Use logo at the top left for the main index.html page and log out button at

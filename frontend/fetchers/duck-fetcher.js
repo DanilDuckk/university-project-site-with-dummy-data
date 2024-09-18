@@ -1,8 +1,19 @@
+const statusMessages = {
+    200: "OK",
+    201: "Created",
+    204: "No Content",
+    400: "Bad Request",
+    401: "Unauthorized",
+    403: "Forbidden",
+    404: "Not Found",
+    500: "Internal Server Error",
+};
+
 async function fetchData() {
     try {
         const response = await fetch('http://localhost:3000/ducks');
         if (!response.ok) {
-            console.error(`Error fetching data. Status: ${response.status} (${StatusCodes.getStatusText(response.status)})`);
+            console.error(`Error fetching data. Status: ${response.status} (${statusMessages[response.status] || "Unknown Status"})`);
             return [];
         }
         const data = await response.json();
@@ -17,8 +28,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const data = await fetchData();
         const ducksContainer = document.getElementById('duck-list');
-
-        //document.getElementById("logout").innerText = `User: ${userId}`;
 
         data.forEach(duck => {
             const duckDiv = document.createElement('div');
@@ -62,15 +71,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json',
-                            userId: localStorage.getItem('userId')
+                            'User-ID': localStorage.getItem('userId')
                         },
                         body: JSON.stringify({ likes: duck.likes + 1 }),
                     });
                     if (!response.ok) {
-                        console.error(`Failed to update likes. Status: ${response.status} (${StatusCodes.getStatusText(response.status)})`);
+                        console.error(`Failed to update likes. Status: ${response.status} (${statusMessages[response.status] || "Unknown Status"})`);
                         return;
                     }
-                    duck.likes++; // Update local data
+                    duck.likes++;
                     likesP.textContent = `Likes: ${duck.likes}`;
                 } catch (error) {
                     console.error('Error updating likes:', error);
@@ -85,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         method: 'DELETE',
                     });
                     if (!response.ok) {
-                        console.error(`Failed to delete duck. Status: ${response.status} (${StatusCodes.getStatusText(response.status)})`);
+                        console.error(`Failed to delete duck. Status: ${response.status} (${statusMessages[response.status] || "Unknown Status"})`);
                         return;
                     }
                     ducksContainer.removeChild(duckDiv);

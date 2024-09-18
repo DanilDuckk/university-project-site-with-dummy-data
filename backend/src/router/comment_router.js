@@ -10,6 +10,6 @@ router.get('/:id', comment_controller.findCommentById)
 
 router.get('/duck/:id', comment_controller.findDuckComments)
 
-router.post('/addComment', comment_controller.postComment)
+router.post('/', comment_controller.postComment)
 
 export default router;

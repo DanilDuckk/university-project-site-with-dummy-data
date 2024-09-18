@@ -1,3 +1,15 @@
+const statusMessages = {
+    200: "OK",
+    201: "Created",
+    204: "No Content",
+    400: "Bad Request",
+    401: "Unauthorized",
+    403: "Forbidden",
+    404: "Not Found",
+    409: "Conflict",
+    500: "Internal Server Error",
+};
+
 document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const duckId = urlParams.get('duckId');
@@ -5,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const response = await fetch(`http://localhost:3000/ducks/clicked/${duckId}`);
         if (!response.ok) {
-            console.error(`Error fetching duck details. Status: ${response.status} (${getReasonPhrase(response.status)})`);
+            console.error(`Error fetching duck details. Status: ${response.status} (${statusMessages[response.status] || "Unknown Status"})`);
             return;
         }
         const duck = await response.json();
@@ -42,7 +54,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const commentsResponse = await fetch(`http://localhost:3000/comments/duck/${duckId}`);
             if (!commentsResponse.ok) {
-                console.error(`Error fetching comments. Status: ${commentsResponse.status} (${getReasonPhrase(commentsResponse.status)})`);
+                console.error(`Error fetching comments. Status: ${commentsResponse.status} (${statusMessages[commentsResponse.status] || "Unknown Status"})`);
                 return;
             }
             const comments = await commentsResponse.json();
@@ -70,7 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (newComment) {
             const userId = localStorage.getItem('userId');
             try {
-                const response = await fetch(`http://localhost:3000/comments/addComment`, {
+                const response = await fetch(`http://localhost:3000/comments`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -82,9 +94,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (response.ok) {
                     commentInput.value = '';
                     location.reload();
+                } else if (response.status === 401) { // Unauthorized
+                    alert(`Need to make an account before commenting! Status: ${response.status} (${statusMessages[response.status] || "Unknown Status"})`);
+                    console.error(`Failed to submit comment - Unauthorized. Status: ${response.status} (${statusMessages[response.status] || "Unknown Status"})`);
                 } else {
-                    alert(`Need to make an account before commenting! Status: ${response.status} (${getReasonPhrase(response.status)})`);
-                    console.error(`Failed to submit comment. Status: ${response.status} (${getReasonPhrase(response.status)})`);
+                    alert(`Need to make an account before commenting! Status: ${response.status} (${statusMessages[response.status] || "Unknown Status"})`);
+                    console.error(`Failed to submit comment. Status: ${response.status} (${statusMessages[response.status] || "Unknown Status"})`);
                 }
             } catch (submitError) {
                 console.error('Error submitting comment:', submitError);

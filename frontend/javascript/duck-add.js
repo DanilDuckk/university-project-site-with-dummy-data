@@ -1,4 +1,15 @@
-document.getElementById('uploadButton').addEventListener('click', async function() {
+const statusMessages = {
+    200: "OK",
+    201: "Created",
+    204: "No Content",
+    400: "Bad Request",
+    401: "Unauthorized",
+    403: "Forbidden",
+    404: "Not Found",
+    500: "Internal Server Error",
+};
+
+document.getElementById('uploadButton').addEventListener('click', function() {
     const imageContainer = document.getElementById('imageContainer');
     const imageUrl = document.getElementById('imageUrl').value.trim();
     imageContainer.innerHTML = '';
@@ -31,9 +42,15 @@ document.getElementById('createDuck').addEventListener('click', async () => {
 
         if (response.ok) {
             window.location.href = "../index.html";
+        } else if (response.status === 401) {
+            alert("Need to make an account before creating a duck!");
+            console.error(`Failed to add duck - Unauthorized. Status: ${response.status} (${statusMessages[response.status] || "Unknown Status"})`);
+        } else if (response.status >= 500) {
+            alert("Need to make an account before creating a duck!");
+            console.error(`Failed to add duck - Server Error. Status: ${response.status} (${statusMessages[response.status] || "Unknown Status"})`);
         } else {
             alert("Need to make an account before creating a duck!");
-            console.error('Failed to add duck.');
+            console.error(`Failed to add duck - Unknown Error. Status: ${response.status} (${statusMessages[response.status] || "Unknown Status"})`);
         }
     } catch (error) {
         console.error('Error adding duck:', error);

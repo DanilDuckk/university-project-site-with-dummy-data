@@ -12,7 +12,7 @@
         <a href="index.html">
             <img src="materials/logo.png" alt="clickable duck logo" class="logo-style">
         </a>
-        <a href="pages/logInPage.html" id="logout" class="small-text">Logout</a>
+        <a onclick="resetUser()" id="logout" class="small-text">Logout</a>
     </header>
     <section>
         <button onclick="window.location.href = 'pages/addDuckPage.html'" class="buttons-sorted"> Add your own species </button>
@@ -27,7 +27,13 @@
         </div>
     </section>
 </main>
-<script src="fetchers/duck-fetcher.js"></script>
-<script src="javascript/user-update.js"></script>
+<script type="module" src="fetchers/duck-fetcher.js"></script>
+<script type="module" src="javascript/user-update.js"></script>
+<script>
+    function resetUser() {
+        window.location.href = './pages/logInPage.html';
+        localStorage.setItem('userId', 'undefined');
+    }
+</script>
 </body>
 </html>
